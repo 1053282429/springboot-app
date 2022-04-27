@@ -22,6 +22,3 @@
 - 2.启动sprtingboot-app位置com.wangsong.Application
 - 3.访问/html/login.html
 
-## qq交流群
-
-- 74745979
