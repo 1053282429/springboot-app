@@ -10,6 +10,7 @@ public class TestApplicationContextInitializer implements ApplicationContextInit
     public void initialize(ConfigurableApplicationContext applicationContext) {
         System.out.println("ApplicationContextInitializer==============================执行");
 
+
         applicationContext.publishEvent(new TestApplicationEvent(new Object()));
 
     }
