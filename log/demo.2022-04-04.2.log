@@ -1,0 +1,9 @@
+2022-04-04 21:50:34,031 INFO (StartupInfoLogger.java:61)- Started Application in 4.462 seconds (JVM running for 5.424)
+2022-04-04 21:51:17,462 INFO (StartupInfoLogger.java:55)- Starting Application using Java 1.8.0_261 on LAPTOP-30LRP1K1 with PID 42064 (E:\ideaworkspace\spring-app-master\target\classes started by 边俊超 in E:\ideaworkspace\spring-app-master)
+2022-04-04 21:51:17,465 INFO (SpringApplication.java:640)- No active profile set, falling back to 1 default profile: "default"
+2022-04-04 21:51:21,576 INFO (StartupInfoLogger.java:61)- Started Application in 4.439 seconds (JVM running for 5.373)
+2022-04-04 21:59:33,474 INFO (StartupInfoLogger.java:55)- Starting Application using Java 1.8.0_261 on LAPTOP-30LRP1K1 with PID 34776 (E:\ideaworkspace\spring-app-master\target\classes started by 边俊超 in E:\ideaworkspace\spring-app-master)
+2022-04-04 21:59:33,483 INFO (SpringApplication.java:640)- No active profile set, falling back to 1 default profile: "default"
+2022-04-04 21:59:37,619 INFO (StartupInfoLogger.java:61)- Started Application in 4.482 seconds (JVM running for 5.47)
+2022-04-04 22:01:16,779 INFO (StartupInfoLogger.java:55)- Starting Application using Java 1.8.0_261 on LAPTOP-30LRP1K1 with PID 42736 (E:\ideaworkspace\spring-app-master\target\classes started by 边俊超 in E:\ideaworkspace\spring-app-master)
+2022-04-04 22:01:16,781 INFO (SpringApplication.java:640)- No active profile set, falling back to 1 default profile: "default"

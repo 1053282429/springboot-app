@@ -1,0 +1,4 @@
+#org.springframework.boot.env.EnvironmentPostProcessor=com.wangsong.system.init.TestEnvironmentPostProcessor
+#org.springframework.context.ApplicationListener=com.wangsong.system.init.TestEnvironmentPostProcessor
+#org.springframework.context.ApplicationListener=com.wangsong.system.event.TestApplicationListener,com.wangsong.system.event.TestApplicationListener1
+#org.springframework.context.ApplicationContextInitializer=com.wangsong.system.event.TestApplicationContextInitializer
