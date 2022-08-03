@@ -2,6 +2,8 @@ package com.wangsong.system.init;
 
 import com.wangsong.system.entity.Resources;
 import com.wangsong.system.service.IResourcesService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
@@ -12,6 +14,9 @@ public class TestCommandLineRunner implements CommandLineRunner {
 
     @Autowired
     private PropertySourcesTest propertySourcesTest;
+
+    private Logger logger = LoggerFactory.getLogger(TestCommandLineRunner.class);
+
 
     @Value("${access.user.name}")
     private String name;
@@ -39,6 +44,11 @@ public class TestCommandLineRunner implements CommandLineRunner {
         System.out.println(configParam.toString());
         System.out.println(configParam.getUrl());
         System.out.println(configParam.getPort());
+
+        logger.info("info");
+        logger.debug("debug");
+        logger.error("error");
+        logger.warn("warn");
 
 
     }
