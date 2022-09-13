@@ -3,20 +3,34 @@ package com.wangsong.nacos.impl;
 import com.alibaba.nacos.api.NacosFactory;
 import com.alibaba.nacos.api.config.ConfigService;
 import com.alibaba.nacos.api.exception.NacosException;
+import com.alibaba.nacos.api.naming.NamingFactory;
+import com.alibaba.nacos.api.naming.NamingService;
 import com.alibaba.nacos.api.naming.listener.EventListener;
 import com.alibaba.nacos.api.naming.pojo.Instance;
 import com.wangsong.nacos.NacosService;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 @Service
 public class NacosServiceImpl implements NacosService {
 
-    private String serverAddr = "127.0.0.1:8848";
+    private static String serverAddr = "127.0.0.1:8848";
 
     private NacosListener listener = new NacosListener();
+
+    NamingService naming;
+
+    {
+        try {
+            naming = NamingFactory.createNamingService(serverAddr);
+        } catch (NacosException e) {
+            e.printStackTrace();
+        }
+    }
 
     private ConfigService getInstance() {
         Properties properties = new Properties();
@@ -70,7 +84,16 @@ public class NacosServiceImpl implements NacosService {
 
     @Override
     public void registerInstance(String serviceName, String ip, int port) throws NacosException {
-
+        Instance instance = new Instance();
+        instance.setIp(ip);
+        instance.setPort(port);
+        instance.setHealthy(true);
+        instance.setWeight(1.0);
+        Map<String, String> instanceMeta = new HashMap<>();
+        instanceMeta.put("site", "et2");
+        instance.setEphemeral(true);
+        instance.setMetadata(instanceMeta);
+        naming.registerInstance(serviceName, "test-group",instance);
     }
 
     @Override
@@ -85,7 +108,7 @@ public class NacosServiceImpl implements NacosService {
 
     @Override
     public void deregisterInstance(String serviceName, String ip, int port) throws NacosException {
-
+        naming.deregisterInstance(serviceName, "test-group", ip, port);
     }
 
     @Override

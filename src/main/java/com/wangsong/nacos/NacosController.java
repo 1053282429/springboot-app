@@ -50,20 +50,30 @@ public class NacosController {
         }
     }
 
-    @PostMapping("/removeListener")
-    private void removeListener(){
-        try {
-            nacosService.removeListener("server","test");
-        } catch (NacosException e) {
-            e.printStackTrace();
-        }
-    }
-
     @PostMapping("/removeConfig")
     private void removeConfig(){
         try {
             boolean b = nacosService.removeConfig("server", "test");
             System.out.println("removeConfig======="+b);
+        } catch (NacosException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    @PostMapping("/register")
+    private void register(){
+        try {
+            nacosService.registerInstance("testService","127.0.0.1",8080);
+        } catch (NacosException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @PostMapping("/deleteRegister")
+    private void deleteRegister(){
+        try {
+            nacosService.deregisterInstance("testService","127.0.0.1",8080);
         } catch (NacosException e) {
             e.printStackTrace();
         }
