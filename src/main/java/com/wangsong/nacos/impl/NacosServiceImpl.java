@@ -93,7 +93,7 @@ public class NacosServiceImpl implements NacosService {
         instanceMeta.put("site", "et2");
         instance.setEphemeral(true);
         instance.setMetadata(instanceMeta);
-        naming.registerInstance(serviceName, "test-group",instance);
+        naming.registerInstance(serviceName,instance);
     }
 
     @Override
@@ -108,7 +108,7 @@ public class NacosServiceImpl implements NacosService {
 
     @Override
     public void deregisterInstance(String serviceName, String ip, int port) throws NacosException {
-        naming.deregisterInstance(serviceName, "test-group", ip, port);
+        naming.deregisterInstance(serviceName, ip, port);
     }
 
     @Override
@@ -128,7 +128,7 @@ public class NacosServiceImpl implements NacosService {
 
     @Override
     public List<Instance> selectInstances(String serviceName, boolean healthy) throws NacosException {
-        return null;
+        return naming.selectInstances(serviceName,healthy);
     }
 
     @Override

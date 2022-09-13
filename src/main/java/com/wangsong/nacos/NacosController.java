@@ -2,12 +2,14 @@ package com.wangsong.nacos;
 
 import cn.hutool.json.JSONObject;
 import com.alibaba.nacos.api.exception.NacosException;
+import com.alibaba.nacos.api.naming.pojo.Instance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
+import java.util.List;
 
 @RestController
 @RequestMapping("/nacos")
@@ -79,6 +81,15 @@ public class NacosController {
         }
     }
 
-
+    @PostMapping("/getServiceList")
+    private void getServiceList(){
+        try {
+            List<Instance> testService = nacosService.selectInstances("testService", true);
+            System.out.println("获取的服务列表");
+            System.out.println(testService);
+        } catch (NacosException e) {
+            e.printStackTrace();
+        }
+    }
 
 }
