@@ -1,8 +1,8 @@
 package com.wangsong.nacos;
 
-import cn.hutool.json.JSONObject;
 import com.alibaba.nacos.api.exception.NacosException;
 import com.alibaba.nacos.api.naming.pojo.Instance;
+import com.wangsong.system.HBTest.TestPublishEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/nacos")
@@ -18,19 +19,41 @@ public class NacosController {
     @Autowired
     private NacosService nacosService;
 
+    @Autowired
+    private TestPublishEvent testPublishEvent;
+    @Autowired
+    private EmailTool emailTool;
+
+
+
+
+
 
     @PostMapping("/publishConfig")
     private void publishConfig(){
-        try {
-            JSONObject jsonObject = new JSONObject();
-            HashMap<String, Object> map = new HashMap<>();
-            map.put("ip","127.0.0.1");
-            jsonObject.putAll(map);
-            boolean b = nacosService.publishConfig("server", "test", jsonObject.toString(), "json");
-            System.out.println("publishConfig======="+b);
-        } catch (NacosException e) {
-            e.printStackTrace();
-        }
+//        try {
+
+            String[] filePath = new String[]{"E:\\01.png"};
+
+            Map<String, Object> valueMap = new HashMap<>();
+            valueMap.put("to", new String[]{"1053282429@qq.com", "2924476348@qq.com"});
+            valueMap.put("title", "test邮件标题");
+            valueMap.put("content", "test邮件内容");
+            valueMap.put("filePathList", filePath);
+
+            emailTool.sendSimpleMail(valueMap);
+
+
+//            testPublishEvent.testPublishEvent();
+//            JSONObject jsonObject = new JSONObject();
+//            HashMap<String, Object> map = new HashMap<>();
+//            map.put("ip","127.0.0.1");
+//            jsonObject.putAll(map);
+//            boolean b = nacosService.publishConfig("server", "test", jsonObject.toString(), "json");
+//            System.out.println("publishConfig======="+b);
+//        } catch (NacosException e) {
+//            e.printStackTrace();
+//        }
     }
 
     @PostMapping("/getConfig")
