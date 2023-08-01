@@ -32,7 +32,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
   protected void configure(HttpSecurity http) throws Exception {
     http.headers().frameOptions().disable();
     http.cors().and().csrf().disable().authorizeRequests()
-        .antMatchers("/html/**","/login","/nacos/**").permitAll()
+        .antMatchers("/**").permitAll()
         .anyRequest().authenticated()
         .and()
         .addFilter(new JWTLoginFilter(authenticationManager(),userService))

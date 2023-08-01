@@ -8,9 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/nacos")
@@ -21,8 +19,8 @@ public class NacosController {
 
     @Autowired
     private TestPublishEvent testPublishEvent;
-    @Autowired
-    private EmailTool emailTool;
+//    @Autowired
+//    private EmailTool emailTool;
 
 
 
@@ -31,17 +29,19 @@ public class NacosController {
 
     @PostMapping("/publishConfig")
     private void publishConfig(){
+
+        MailUtils.sendMails();
 //        try {
 
-            String[] filePath = new String[]{"E:\\01.png"};
-
-            Map<String, Object> valueMap = new HashMap<>();
-            valueMap.put("to", new String[]{"1053282429@qq.com", "2924476348@qq.com"});
-            valueMap.put("title", "test邮件标题");
-            valueMap.put("content", "test邮件内容");
-            valueMap.put("filePathList", filePath);
-
-            emailTool.sendSimpleMail(valueMap);
+//            String[] filePath = new String[]{"E:\\01.png"};
+//
+//            Map<String, Object> valueMap = new HashMap<>();
+//            valueMap.put("to", new String[]{"1053282429@qq.com", "2924476348@qq.com"});
+//            valueMap.put("title", "test邮件标题");
+//            valueMap.put("content", "test邮件内容");
+//            valueMap.put("filePathList", filePath);
+//
+//            emailTool.sendSimpleMail(valueMap);
 
 
 //            testPublishEvent.testPublishEvent();

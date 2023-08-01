@@ -1,10 +1,9 @@
 package com.wangsong.system.controller;
 
 
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RestController;
 import com.wangsong.common.controller.BaseController;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>
@@ -17,5 +16,15 @@ import com.wangsong.common.controller.BaseController;
 @RestController
 @RequestMapping("/system/user-role")
 public class UserRoleController extends BaseController {
+
+    private WebSocketServer webSocketServer = new WebSocketServer();
+
+//    @Autowired
+//    private WebSocketTest webSocketTest;
+//
+//    @PostConstruct
+//    public void test(){
+//        System.out.println(webSocketTest);
+//    }
 
 }
